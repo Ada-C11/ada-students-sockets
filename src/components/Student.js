@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Student = () => {
+const Student = (props) => {
+  console.log(props);
   return (
-    <h3>Student Component</h3>
-  )
+    <section>
+      <h3>Student Component</h3>
+      <h4>Name {props.fullName} </h4>
+      <p>Email: {props.email} </p>
+    </section>
+  );
 }
 
 export default Student;
