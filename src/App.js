@@ -23,7 +23,6 @@ const students = [
   },
   {
     fullName: 'Butter',
-    email: 'noname@spookytown.gov',
     classRoom: 89890,
   }
 
