@@ -6,14 +6,9 @@ import StudentCollection from
 
 import Student from './components/Student';
 
-
-const goofy_func = (a, b) => {
-  return a + b;
-}
-
 const students = [
   {
-    fullName: 'Devin Helmgrin',
+    fullName: 'Devin Helmgren',
     email: 'devin@dontemailme.org',
   },
   {
@@ -27,8 +22,6 @@ const students = [
 ];
 
 function App() {
-  const cool_string = "Sockets ROCK!!!!!"
-
   return (
     <div className="App">
       <header className="App-header">
