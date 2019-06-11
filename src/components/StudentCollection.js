@@ -1,14 +1,16 @@
 import React from 'react';
 import Student from './Student';
+import './StudentCollection.css'
 
 
 const generateStudentComponents = (students) => {
   return students.map((student) => {
-    const { fullName, email } = student;
+    const { fullName, email, classRoom } = student;
     return (<Student
       key={fullName}
       fullName={fullName}
       email={email}
+      classRoom={classRoom}
     />);
   });
 };
@@ -21,7 +23,7 @@ const StudentCollection = (props) => {
   const studentComponents = generateStudentComponents(students);
 
   return (
-    <div>Students
+    <div className="student-collection">Students
       {studentComponents}
     </div>
 

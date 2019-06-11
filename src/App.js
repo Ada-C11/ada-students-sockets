@@ -10,15 +10,23 @@ const students = [
   {
     fullName: 'Devin Helmgren',
     email: 'devin@dontemailme.org',
+    classRoom: 'socket',
   },
   {
     fullName: 'Dee',
     email: 'dee@dee.com',
+    classRoom: 'port',
   },
   {
     fullName: 'Ada Lovelace',
     email: 'ada@adadev.org',
+  },
+  {
+    fullName: 'Butter',
+    email: 'noname@spookytown.gov',
+    classRoom: 89890,
   }
+
 ];
 
 function App() {
