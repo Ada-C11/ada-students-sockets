@@ -1,22 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import './Student.css';
 
-const Student = (props) => {
-  console.log(props);
-  let classToUse = 'student-socket';
-  if (props.classRoom === 'port') {
-    classToUse = 'student-port'
+class Student extends Component{
+  
+
+  render(){
+    console.log(this.props);
+    let classToUse = 'student-socket';
+    if (this.props.classRoom === 'port') {
+      classToUse = 'student-port'
+    }
+    return (
+      <section className={classToUse}>
+        <h3>Student Component</h3>
+        <h4>Name {this.props.fullName} </h4>
+        <p>Email: {this.props.email} </p>
+      </section>
+    );
   }
-  return (
-    <section className={classToUse}>
-      <h3>Student Component</h3>
-      <h4>Name {props.fullName} </h4>
-      <p>Email: {props.email} </p>
-    </section>
-  );
-}
+} 
+
 
 Student.propTypes = {
   fullName: PropTypes.string.isRequired,
