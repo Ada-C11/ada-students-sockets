@@ -5,3 +5,11 @@
 .student-port {
   border: 1em solid blue;
 }
+
+.present {
+  color: greenyellow;
+}
+
+.absent{
+  color: red;
+}

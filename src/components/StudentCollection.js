@@ -1,33 +1,66 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Student from './Student';
 import './StudentCollection.css'
 
+class StudentCollection extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      students: [
+        {
+          fullName: 'Devin Helmgren',
+          email: 'devin@dontemailme.org',
+          classRoom: 'socket',
+          isPresent: false
+        },
+        {
+          fullName: 'Dee',
+          email: 'dee@dee.com',
+          classRoom: 'port',
+          isPresent: false
+        },
+        {
+          fullName: 'Ada Lovelace',
+          email: 'ada@adadev.org',
+          isPresent: false
+        }
+      ]
+    }
+  }
 
-const generateStudentComponents = (students) => {
-  return students.map((student) => {
-    const { fullName, email, classRoom } = student;
-    return (<Student
-      key={fullName}
-      fullName={fullName}
-      email={email}
-      classRoom={classRoom}
-    />);
-  });
-};
+  markPresent = (studentIndex) => {
+    console.log(studentIndex);
+    let newState = this.state;
 
-const StudentCollection = (props) => {
-  console.log(props);
-  const { students, num } = props;
-  console.log(num);
+    newState.students[studentIndex].isPresent = true;
 
-  const studentComponents = generateStudentComponents(students);
+    this.setState(newState)
+  }
 
-  return (
-    <div className="student-collection">Students
-      {studentComponents}
-    </div>
-
-  );
+  render() {
+   
+  
+    const studentComponents = this.state.students.map((student, index) => {
+      const { fullName, email, classRoom, isPresent } = student;
+      return (<li key={index}><Student
+        key={index}
+        fullName={fullName}
+        email={email}
+        index={index}
+        classRoom={classRoom}
+        isPresent={isPresent}
+        markPresentCallback={this.markPresent}
+      />
+      </li>);
+    });
+  
+    return (
+      <div className="student-collection">Students
+        {studentComponents}
+      </div>
+  
+    );
+  }
 }
 
 export default StudentCollection;
