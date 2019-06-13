@@ -3,31 +3,31 @@ import PropTypes from 'prop-types';
 
 import './Student.css';
 
-class Student extends React.Component{
-  onPresentButtonClick = () => {
-    console.log(this)
-    this.props.markPresentCallback(this.props.index);
+
+
+const Student = (props) => {
+  const onPresentButtonClick = () => {
+    console.log(props)
+    props.markPresentCallback(props.index);
+  }
+  
+  let classroomClass = 'student-socket';
+  if (props.classRoom === 'port') {
+    classroomClass = 'student-port'
   }
 
-  render (){
-    let classroomClass = 'student-socket';
-    if (this.props.classRoom === 'port') {
-      classroomClass = 'student-port'
-    }
+  let attendanceClass = (props.isPresent) ? 'present' : 'absent';
 
-    let attendanceClass = (this.props.isPresent) ? 'present' : 'absent';
-
-    return (
-      <section className={classroomClass}>
-        <h3>Student Component</h3>
-        <h4 className={attendanceClass}>Name {this.props.fullName} </h4>
-        <p>Email: {this.props.email} </p>
-        <button 
-          disabled={ this.props.isPresent }
-          onClick={ this.onPresentButtonClick }>Mark Present</button>
-      </section>
-    );
-  }
+  return (
+    <section className={classroomClass}>
+      <h3>Student Component</h3>
+      <h4 className={attendanceClass}>Name {props.fullName} </h4>
+      <p>Email: {props.email} </p>
+      <button 
+        disabled={ props.isPresent }
+        onClick={ onPresentButtonClick }>Mark Present</button>
+    </section>
+  );
 }
 
 Student.propTypes = {
