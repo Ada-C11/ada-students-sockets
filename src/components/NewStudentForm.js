@@ -5,8 +5,8 @@ class NewStudentForm extends Component {
   constructor() {
     super();
     this.state = {
-        fullName: "",
-        email: ""
+        fullName: null,
+        email: null
     };
   }
 
@@ -24,26 +24,56 @@ class NewStudentForm extends Component {
   }
 
   onFormSubmit = (event) => {
-      event.preventDefault();
+    event.preventDefault();
 
-      const newStudent = {
-          fullName: this.state.fullName,
-          email: this.state.email
-      }
+    const newStudent = {
+        fullName: this.state.fullName,
+        email: this.state.email
+    }
 
+    if (this.hasValidName() && this.hasValidEmail()) {
       this.props.addStudentCallback(newStudent);
+    }
+  }
+
+  hasValidName = () => {
+    return this.state.fullName !== "";
+  }
+
+  hasValidEmail = () => {
+    // We need to validate that the email isn't null before we can .match
+    return this.state.email && this.state.email.match(/.+@.+[.].+/);
+  }
+
+  nameRequired = () => {
+    if (this.hasValidName()) {
+      return <div></div>;
+    } else {
+      return <div>Error: Name is required</div>;
+    }
+  }
+
+  emailRequired = () => {
+    if (this.hasValidEmail()) {
+      return <div></div>;
+    } else {
+      return <div>Error: Invalid email</div>;
+    }
   }
 
   render() {
+
     return (
       <form 
-      className="new-student-form"
-      onSubmit = {this.onFormSubmit}>
+        className="new-student-form"
+        onSubmit = {this.onFormSubmit}>
         <div>
+          {this.nameRequired()}
           <label htmlFor="fullName">Name:</label>
           <input name="fullName" value={this.state.fullName} onChange={this.onNameChange}/>
         </div>
         <div>
+          {this.emailRequired()}
           <label htmlFor="email">Email:</label>
           <input name="email" value={this.state.email} onChange={this.onEmailChange}/>
         </div>
