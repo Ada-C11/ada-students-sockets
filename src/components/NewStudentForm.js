@@ -41,11 +41,11 @@ class NewStudentForm extends Component {
       onSubmit = {this.onFormSubmit}>
         <div>
           <label htmlFor="fullName">Name:</label>
-          <input name="fullName" onChange={this.onNameChange}/>
+          <input name="fullName" value={this.state.fullName} onChange={this.onNameChange}/>
         </div>
         <div>
           <label htmlFor="email">Email:</label>
-          <input name="email" onChange={this.onEmailChange}/>
+          <input name="email" value={this.state.email} onChange={this.onEmailChange}/>
         </div>
         <input
           type="submit"
